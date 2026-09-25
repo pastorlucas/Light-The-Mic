@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Light The Mic — Music. Message. Movement. Discover your gifts, develop your potential, follow Jesus, and change your world.">
+  <title>Light The Mic | Music. Message. Movement.</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #050505;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5, 5, 5, 0.95);
+      border-bottom: 1px solid #222;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: auto;
+      padding: 15px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .brand span {
+      color: #f4b900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover {
+      color: #f4b900;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(244,185,0,.22), transparent 35%),
+        linear-gradient(180deg, #111 0%, #050505 75%);
+    }
+
+    .hero-content {
+      max-width: 950px;
+    }
+
+    .eyebrow {
+      color: #f4b900;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(4rem, 12vw, 9rem);
+      line-height: 0.86;
+      font-weight: 1000;
+      letter-spacing: -5px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 .gold {
+      color: #f4b900;
+    }
+
+    .tagline {
+      margin-top: 28px;
+      font-size: clamp(1.15rem, 3vw, 1.8rem);
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .hero-text {
+      max-width: 680px;
+      margin: 22px auto 0;
+      color: #c9c9c9;
+      font-size: 1.08rem;
+    }
+
+    .buttons {
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 25px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 2px solid #f4b900;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: #f4b900;
+      color: #050505;
+    }
+
+    .btn-primary:hover {
+      background: #ffd23f;
+      border-color: #ffd23f;
+    }
+
+    .btn-secondary:hover {
+      background: #f4b900;
+      color: #050505;
+    }
+
+    /* EVENT */
+
+    .event {
+      background: #f4b900;
+      color: #050505;
+      text-align: center;
+      padding: 28px 20px;
+    }
+
+    .event strong {
+      font-size: clamp(1.2rem, 4vw, 2rem);
+      text-transform: uppercase;
+    }
+
+    /* GENERAL SECTIONS */
+
+    section {
+      padding: 90px 24px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-label {
+      color: #f4b900;
+      font-size: .8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(2.3rem, 7vw, 4.5rem);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .lead {
+      max-width: 750px;
+      color: #c5c5c5;
+      font-size: 1.15rem;
+    }
+
+    /* THREE PILLARS */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 45px;
+    }
+
+    .card {
+      padding: 35px 28px;
+      background: #101010;
+      border-top: 4px solid #f4b900;
+    }
+
+    .card-number {
+      color: #f4b900;
+      font-size: .8rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
+
+    .card h3 {
+      font-size: 1.7rem;
+      margin: 8px 0 12px;
+      text-transform: uppercase;
+    }
+
+    .card p {
+      color: #aaa;
+    }
+
+    /* CREATED FOR MORE */
+
+    .more {
+      background: #0d0d0d;
+      text-align: center;
+    }
+
+    .more .lead {
+      margin: auto;
+    }
+
+    .more-steps {
+      margin: 45px auto 0;
+      max-width: 850px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .step {
+      padding: 22px 10px;
+      border: 1px solid #292929;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .step span {
+      display: block;
+      color: #f4b900;
+      font-size: 1.6rem;
+      margin-bottom: 5px;
+    }
+
+    /* CDO EVENT */
+
+    .cdo {
+      text-align: center;
+      background:
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.9)),
+        #111;
+    }
+
+    .date {
+      color: #f4b900;
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 1000;
+      text-transform: uppercase;
+      margin: 15px 0;
+    }
+
+    .location {
+      font-size: 1.25rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* JESUS */
+
+    .jesus {
+      background: #f4b900;
+      color: #080808;
+    }
+
+    .jesus .section-label {
+      color: #080808;
+    }
+
+    .jesus .lead {
+      color: #222;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 50px 24px;
+      text-align: center;
+      background: #030303;
+      color: #777;
+      border-top: 1px solid #1d1d1d;
+    }
+
+    footer .footer-brand {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    footer .footer-brand span {
+      color: #f4b900;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .cards,
+      .more-steps {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 65px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="#home">LIGHT <span>THE MIC</span></a>
+
+      <div class="nav-links">
+        <a href="#movement">Movement</a>
+        <a href="#event">CDO 2027</a>
+        <a href="#more">Created For More</a>
+        <a href="#jesus">Jesus</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+
+        <div class="eyebrow">Music • Message • Movement</div>
+
+        <h1>
+          Light<br>
+          <span class="gold">The Mic</span>
+        </h1>
+
+        <div class="tagline">You Were Created For More.</div>
+
+        <p class="hero-text">
+          Discover your gifts. Develop your potential. Follow Jesus.
+          Change your world.
+        </p>
+
+        <div class="buttons">
+          <a class="btn btn-primary" href="#event">CDO • January 30</a>
+          <a class="btn btn-secondary" href="#movement">Discover The Movement</a>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="event">
+      <strong>Light The Mic • Cagayan de Oro • January 30, 2027</strong>
+    </div>
+
+    <section id="movement">
+      <div class="container">
+
+        <div class="section-label">More Than An Event</div>
+
+        <h2>Music. Message.<br>Movement.</h2>
+
+        <p class="lead">
+          Light The Mic uses talent, music, stories and real conversations
+          to inspire a generation to discover what God has placed inside them
+          and use it to make a difference.
+        </p>
+
+        <div class="cards">
+
+          <div class="card">
+            <div class="card-number">01</div>
+            <h3>Music</h3>
+            <p>
+              A platform for emerging artists and young people to share their
+              talent and develop their gifts.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-number">02</div>
+            <h3>Message</h3>
+            <p>
+              Honest conversations about purpose, faith, truth, Jesus and
+              the questions that matter.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-number">03</div>
+            <h3>Movement</h3>
+            <p>
+              Building a global community of young people determined to use
+              what God has placed in their hands.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="more" id="more">
+      <div class="container">
+
+        <div class="section-label">The Challenge</div>
+
+        <h2>You Were Created<br>For More.</h2>
+
+        <p class="lead">
+          Your circumstances don't have to determine your future.
+          Your story is still being written. What will you do with
+          what God put in your hands?
+        </p>
+
+        <div class="more-steps">
+
+          <div class="step">
+            <span>01</span>
+            Discover Your Gifts
+          </div>
+
+          <div class="step">
+            <span>02</span>
+            Develop Your Potential
+          </div>
+
+          <div class="step">
+            <span>03</span>
+            Follow Jesus
+          </div>
+
+          <div class="step">
+            <span>04</span>
+            Change Your World
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="cdo" id="event">
+      <div class="container">
+
+        <div class="section-label">The Philippines</div>
+
+        <h2>Light The Mic<br>CDO</h2>
+
+        <div class="date">January 30, 2027</div>
+
+        <div class="location">
+          Cagayan de Oro City • Philippines
+        </div>
+
+        <p class="lead" style="margin:25px auto;">
+          Talent. Music. Stories. Prizes. Real conversations.
+          One unforgettable night.
+        </p>
+
+        <div class="buttons">
+          <a class="btn btn-primary" href="#">Event Details Coming Soon</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="jesus" id="jesus">
+      <div class="container">
+
+        <div class="section-label">The Heart Of Light The Mic</div>
+
+        <h2>Jesus Changes<br>Everything.</h2>
+
+        <p class="lead">
+          Light The Mic is about more than discovering talent or achieving
+          success. We believe you were created by God, for a purpose, and
+          that the greatest discovery of your life is knowing Jesus Christ.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-brand">LIGHT <span>THE MIC</span></div>
+    <p>Music • Message • Movement</p>
+    <p style="margin-top:12px;">© 2026 Light The Mic</p>
+  </footer>
+
+</body>
+</html>
