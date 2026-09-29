@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Apply for The Light The Mic ₱500 Challenge. Tell us how you would put an idea into action.">
+  <title>Apply | The ₱500 Challenge | Light The Mic CDO</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --black: #080808;
+      --panel: #121210;
+      --gold: #f3bd42;
+      --white: #f8f7f3;
+      --muted: #aaa9a4;
+      --line: rgba(255,255,255,.14);
+      --display: Impact, "Arial Narrow", "Arial Black", sans-serif;
+      --body: Arial, Helvetica, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { background: var(--black); scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--body);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    [hidden] { display: none !important; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .wrap { width: min(100% - 40px, 900px); margin-inline: auto; }
+
+    .masthead {
+      display: flex;
+      min-height: 62px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .wordmark { flex-shrink: 0; font-size: .78rem; font-weight: 900; letter-spacing: .12em; }
+    .wordmark span { color: var(--gold); }
+    .masthead-tag { color: #d1cfc9; font-size: .65rem; font-weight: 800; letter-spacing: .12em; text-align: right; text-transform: uppercase; }
+
+    .intro {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding-block: 56px 46px;
+      background:
+        radial-gradient(ellipse at 90% 12%, rgba(243,189,66,.17), transparent 38%),
+        linear-gradient(155deg, #171511, #080808 69%);
+    }
+    .intro::after {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: repeating-linear-gradient(125deg, transparent 0 50px, rgba(255,255,255,.018) 51px, transparent 52px 102px);
+      content: "";
+      mask-image: linear-gradient(90deg, transparent, #000 60%, transparent);
+    }
+    .eyebrow { margin: 0 0 15px; color: var(--gold); font-size: .7rem; font-weight: 900; letter-spacing: .19em; text-transform: uppercase; }
+    .challenge-name { margin: 0 0 18px; color: var(--gold); font-size: .85rem; font-weight: 900; letter-spacing: .17em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 760px;
+      margin-bottom: 18px;
+      font-family: var(--display);
+      font-size: 3rem;
+      line-height: .87;
+      text-transform: uppercase;
+    }
+    .intro-copy { max-width: 650px; margin-bottom: 26px; color: #d3d0c8; font-size: 1rem; }
+    .action-words { display: grid; gap: 7px; margin: 0 0 26px; color: var(--gold); font-family: var(--display); font-size: 1.65rem; line-height: .96; }
+    .win-label { margin: 0 0 10px; font-size: .74rem; font-weight: 900; letter-spacing: .2em; }
+    .prizes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .prize {
+      min-height: 95px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.035);
+    }
+    .prize:first-child { grid-column: 1 / -1; border-color: var(--gold); background: linear-gradient(110deg, rgba(243,189,66,.2), rgba(255,255,255,.035)); }
+    .prize-rank { display: block; margin-bottom: 5px; color: #e1ded6; font-size: .66rem; font-weight: 900; letter-spacing: .17em; }
+    .prize-amount { display: block; color: var(--gold); font-family: var(--display); font-size: 2.65rem; line-height: .88; }
+    .prize:first-child .prize-amount { font-size: 3.7rem; }
+    .prize-note { margin: 14px 0 0; color: var(--muted); font-size: .82rem; }
+
+    main { padding-bottom: 64px; }
+    .application { padding-top: 42px; }
+    .section-kicker { margin-bottom: 8px; color: var(--gold); font-size: .68rem; font-weight: 900; letter-spacing: .2em; text-transform: uppercase; }
+    h2 {
+      margin-bottom: 22px;
+      font-family: var(--display);
+      font-size: 2.6rem;
+      line-height: .9;
+      text-transform: uppercase;
+    }
+    .form-section {
+      margin: 0 0 18px;
+      padding: 22px 18px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+    .form-section legend {
+      padding: 0 8px;
+      color: var(--gold);
+      font-family: var(--display);
+      font-size: 1.4rem;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .form-grid { display: grid; gap: 16px; }
+    .field { display: grid; align-content: start; gap: 7px; }
+    .field label, .field-label { font-size: .86rem; font-weight: 800; }
+    .optional { color: var(--muted); font-size: .75rem; font-weight: 400; }
+    input, textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 13px;
+      border: 1px solid #44433e;
+      border-radius: 0;
+      background: #080808;
+      color: var(--white);
+      font: 1rem var(--body);
+    }
+    input::placeholder, textarea::placeholder { color: #77756f; }
+    input:focus, textarea:focus { border-color: var(--gold); outline: none; }
+    input[type="number"] { appearance: textfield; }
+    input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { margin: 0; appearance: none; }
+    textarea { min-height: 126px; resize: vertical; line-height: 1.5; }
+    .idea-prompt { margin: 0 0 20px; color: #d2cfc7; }
+    .idea-fields { display: grid; gap: 18px; }
+    .honeypot { display: none; }
+
+    .inspiration {
+      margin: 22px 0;
+      padding: 22px 18px;
+      border-inline-start: 3px solid var(--gold);
+      background: linear-gradient(110deg, rgba(243,189,66,.1), rgba(18,18,16,.82) 75%);
+    }
+    .inspiration h3 { margin-bottom: 19px; color: var(--gold); font-family: var(--display); font-size: 2rem; line-height: .9; text-transform: uppercase; }
+    .inspiration-grid { display: grid; gap: 17px; }
+    .inspiration-item h4 { margin: 0 0 5px; font-size: .76rem; font-weight: 900; letter-spacing: .12em; }
+    .inspiration-item p { margin: 0; color: #cfccc4; font-size: .88rem; line-height: 1.5; }
+    .surprise { margin: 22px 0 0; color: var(--gold); font-family: var(--display); font-size: 2.8rem; line-height: .92; text-transform: uppercase; }
+    .surprise-copy { margin: 8px 0 0; color: #e0ddd5; font-size: .92rem; }
+
+    .contact-note { grid-column: 1 / -1; margin: 0; color: #d3d0c8; font-size: .88rem; }
+    .confirmations { display: grid; gap: 12px; margin: 26px 0; }
+    .check-row { display: grid; grid-template-columns: 22px 1fr; align-items: start; gap: 11px; color: #ddd9d1; font-size: .88rem; line-height: 1.45; }
+    .check-row input { width: 20px; min-height: 20px; height: 20px; margin: 2px 0 0; padding: 0; accent-color: var(--gold); }
+    .submit-button {
+      display: flex;
+      width: 100%;
+      min-height: 60px;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 18px;
+      border: 1px solid var(--gold);
+      border-radius: 0;
+      background: var(--gold);
+      color: #11100c;
+      cursor: pointer;
+      font: 900 .86rem var(--body);
+      letter-spacing: .1em;
+      text-align: center;
+      text-transform: uppercase;
+      transition: background .2s ease, color .2s ease;
+    }
+    .submit-button:hover { background: transparent; color: var(--gold); }
+    .form-status { min-height: 1.5em; margin: 15px 0 0; color: var(--gold); font-size: .9rem; }
+    .form-status:focus { outline: none; }
+    .form-status[data-state="success"] { margin-top: 20px; padding: 18px; border: 1px solid var(--gold); background: rgba(243,189,66,.1); }
+    .form-status[data-state="success"] strong { display: block; margin-bottom: 7px; font-family: var(--display); font-size: 1.8rem; line-height: 1; }
+    .form-status[data-state="success"] span { display: block; color: #e8e4dc; }
+    .form-status[data-state="success"] small { display: block; margin-top: 9px; color: var(--gold); font-size: .85rem; }
+    .form-status[data-state="error"] { color: #ffcf9e; }
+    footer { padding-block: 21px; border-top: 1px solid var(--line); color: #77756e; font-size: .72rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 14px; }
+    .footer-inner strong { color: #d2d0c9; letter-spacing: .08em; }
+
+    @media (min-width: 620px) {
+      .wrap { width: min(100% - 64px, 900px); }
+      .masthead { min-height: 72px; }
+      .intro { padding-block: 76px 64px; }
+      h1 { font-size: 4.25rem; }
+      .action-words { grid-template-columns: 1fr 1fr; gap: 12px; font-size: 2rem; }
+      .prizes { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .prize:first-child { grid-column: auto; }
+      .prize, .prize:first-child { min-height: 138px; padding: 18px; }
+      .prize-amount { font-size: 2.75rem; }
+      .prize:first-child .prize-amount { font-size: 3.25rem; }
+      .form-section { padding: 28px; }
+      .form-grid.two-column { grid-template-columns: 1fr 1fr; }
+      .inspiration { padding: 28px; }
+      .inspiration-grid { grid-template-columns: 1fr 1fr; gap: 23px 28px; }
+    }
+    @media (min-width: 900px) {
+      h1 { font-size: 5rem; }
+      .intro { padding-block: 88px 76px; }
+      .application { padding-top: 60px; }
+      .form-section { padding: 34px; }
+      .idea-fields { grid-template-columns: 1fr 1fr; gap: 22px; }
+      .idea-fields textarea { min-height: 160px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead wrap">
+    <a class="wordmark" href="../" aria-label="Light The Mic CDO home">LIGHT <span>THE MIC</span></a>
+    <span class="masthead-tag">The ₱500 Challenge</span>
+  </header>
+
+  <section class="intro" aria-labelledby="page-title">
+    <div class="wrap">
+      <p class="eyebrow">Light The Mic CDO</p>
+      <p class="challenge-name">The ₱500 Challenge</p>
+      <h1 id="page-title">What would you do with ₱500?</h1>
+      <p class="intro-copy">Up to 100 qualified students will be selected to receive ₱500 to put an idea into action. Tell us what you would do with it.</p>
+      <p class="action-words"><span>Put your idea into action.</span><span>Show us what you did.</span></p>
+      <p class="win-label">You could win:</p>
+      <div class="prizes" aria-label="Additional final prizes">
+        <div class="prize"><span class="prize-rank">1ST PLACE</span><span class="prize-amount">₱5,000</span></div>
+        <div class="prize"><span class="prize-rank">2ND PLACE</span><span class="prize-amount">₱2,000</span></div>
+        <div class="prize"><span class="prize-rank">3RD PLACE</span><span class="prize-amount">₱1,000</span></div>
+      </div>
+      <p class="prize-note">These final prizes are separate from the initial ₱500 given to selected students.</p>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <section class="application" aria-labelledby="application-title">
+      <p class="section-kicker">Your idea starts here</p>
+      <h2 id="application-title">Application form</h2>
+
+      <form id="application-form" novalidate>
+        <fieldset class="form-section">
+          <legend>About you</legend>
+          <div class="form-grid two-column">
+            <div class="field">
+              <label for="full-name">1. Full Name</label>
+              <input id="full-name" name="fullName" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="age">2. Age</label>
+              <input id="age" name="age" type="number" inputmode="numeric" min="1" step="1" required>
+            </div>
+            <div class="field">
+              <label for="school">3. School</label>
+              <input id="school" name="school" type="text" required>
+            </div>
+            <div class="field">
+              <label for="grade">4. Grade / Year Level</label>
+              <input id="grade" name="gradeYear" type="text" required>
+            </div>
+            <p class="contact-note">Don't have a phone or social media? That's okay. You can still apply.</p>
+            <div class="field">
+              <label for="mobile">5. Mobile Number <span class="optional">(optional)</span></label>
+              <input id="mobile" name="mobile" type="tel" inputmode="tel" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="whatsapp">6. WhatsApp Number <span class="optional">(optional)</span></label>
+              <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="email">7. Email Address <span class="optional">(optional)</span></label>
+              <input id="email" name="email" type="email" autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="facebook">8. Facebook / Messenger name or profile <span class="optional">(optional)</span></label>
+              <input id="facebook" name="facebookMessenger" type="text" autocomplete="off">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend>Your ₱500 Idea</legend>
+          <p class="idea-prompt">Tell us what you would do, why it matters to you, and how you would put the money to work.</p>
+          <div class="idea-fields">
+            <div class="field">
+              <label for="idea">9. What would you do with ₱500?</label>
+              <textarea id="idea" name="idea" required></textarea>
+            </div>
+            <div class="field">
+              <label for="why">10. Why did you choose this idea?</label>
+              <textarea id="why" name="why" required></textarea>
+            </div>
+            <div class="field">
+              <label for="spending">11. How would you spend the ₱500?</label>
+              <textarea id="spending" name="spendingPlan" required></textarea>
+            </div>
+            <div class="field">
+              <label for="hope">12. What do you hope will happen because of your idea?</label>
+              <textarea id="hope" name="expectedResult" required></textarea>
+            </div>
+          </div>
+
+          <aside class="inspiration" aria-labelledby="inspiration-title">
+            <h3 id="inspiration-title">Need an idea?</h3>
+            <div class="inspiration-grid">
+              <div class="inspiration-item">
+                <h4>Start something</h4>
+                <p>Examples: buy candy or snacks and sell them, make bracelets or crafts, make food to sell, or offer a simple service.</p>
+              </div>
+              <div class="inspiration-item">
+                <h4>Help someone</h4>
+                <p>Examples: buy groceries for someone in need, provide food, buy school supplies for another student, or help someone in your community.</p>
+              </div>
+              <div class="inspiration-item">
+                <h4>Create something</h4>
+                <p>Examples: make art, build something useful, create a project, repair something, or use your talent in a creative way.</p>
+              </div>
+            </div>
+            <p class="surprise">Or surprise us.</p>
+            <p class="surprise-copy">These are only examples. Your idea does not have to look like anyone else's.</p>
+          </aside>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend>Before you submit</legend>
+          <div class="confirmations">
+            <label class="check-row"><input type="checkbox" name="useFunds" required><span>If selected, I agree to use the ₱500 for the idea described in my application.</span></label>
+            <label class="check-row"><input type="checkbox" name="documentWork" required><span>If selected, I agree to document what I do with photos and/or a short video so Light The Mic can see the results.</span></label>
+            <label class="check-row"><input type="checkbox" name="prizeAcknowledgment" required><span>I understand that receiving the initial ₱500 does not guarantee that I will win one of the final prizes.</span></label>
+          </div>
+          <div class="honeypot" aria-hidden="true" hidden>
+            <label for="website">Website</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <button class="submit-button" id="submit-button" type="submit">Submit my ₱500 idea</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite" tabindex="-1"></p>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner wrap"><strong>LIGHT THE MIC · CDO</strong><span>The ₱500 Challenge</span></div>
+  </footer>
+
+  <script>
+    const endpoint = 'https://script.google.com/macros/s/AKfycbz4esZPo33H58YsmSDYutnCSkLbGqNFrYoFX3Z3q_DZptC5oToYfPMzFGQBhca4hT_8/exec';
+    const form = document.querySelector('#application-form');
+    const formStatus = document.querySelector('#form-status');
+    const submitButton = document.querySelector('#submit-button');
+    let isSubmitting = false;
+
+    form.addEventListener('input', () => { formStatus.textContent = ''; });
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (isSubmitting || !form.reportValidity()) return;
+
+      isSubmitting = true;
+      submitButton.disabled = true;
+      submitButton.textContent = 'SUBMITTING...';
+      formStatus.textContent = '';
+      delete formStatus.dataset.state;
+
+      try {
+        const formData = new FormData(form);
+        const fieldNames = [
+          'fullName', 'age', 'school', 'gradeYear', 'mobile', 'whatsapp',
+          'email', 'facebookMessenger', 'idea', 'why', 'spendingPlan', 'expectedResult'
+        ];
+        const body = new URLSearchParams();
+        fieldNames.forEach(name => body.set(name, formData.get(name) ?? ''));
+        body.set('website', formData.get('website') ?? '');
+
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+          body: body.toString()
+        });
+        const responseText = await response.text();
+        let result = null;
+        if (responseText.trim()) {
+          try { result = JSON.parse(responseText); } catch {}
+        }
+        if (!response.ok || result?.success === false || result?.status === 'error' || result?.error) {
+          throw new Error('Submission failed');
+        }
+
+        const rawApplicationId = result?.applicationId;
+        const applicationId = typeof rawApplicationId === 'string' || typeof rawApplicationId === 'number'
+          ? String(rawApplicationId)
+          : '';
+        form.reset();
+        formStatus.replaceChildren();
+        formStatus.dataset.state = 'success';
+        const confirmation = document.createElement('strong');
+        confirmation.textContent = 'APPLICATION RECEIVED!';
+        const thankYou = document.createElement('span');
+        thankYou.textContent = 'Thank you! Your ₱500 Challenge application has been submitted.';
+        formStatus.append(confirmation, thankYou);
+        if (applicationId) {
+          const idLine = document.createElement('small');
+          idLine.textContent = `Application ID: ${applicationId}`;
+          formStatus.append(idLine);
+        }
+      } catch {
+        formStatus.dataset.state = 'error';
+        formStatus.textContent = "We couldn't submit your application. Please check your connection and try again.";
+      } finally {
+        isSubmitting = false;
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit my ₱500 idea';
+        formStatus.focus();
+      }
+    });
+  </script>
+</body>
+</html>

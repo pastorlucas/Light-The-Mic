@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Light The Mic Cagayan de Oro. Discover your gifts, develop your potential, follow Jesus, and change your world.">
+  <title>Light The Mic CDO | You Were Created For More</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --black: #080808;
+      --gold: #f3bd42;
+      --white: #f8f7f3;
+      --muted: #aaa9a4;
+      --line: rgba(255, 255, 255, .12);
+      --display: Impact, "Arial Narrow", "Arial Black", sans-serif;
+      --body: Arial, Helvetica, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--black); }
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--body);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
+    .wrap { width: min(100% - 40px, 1120px); margin-inline: auto; }
+
+    .topbar {
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 19px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .wordmark { font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .wordmark span { color: var(--gold); }
+    .topbar-location {
+      color: #d1cfc9;
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      min-height: max(690px, 100svh);
+      align-items: center;
+      overflow: hidden;
+      padding: 96px 0 70px;
+      background:
+        radial-gradient(ellipse at 75% 37%, rgba(244, 188, 61, .17), transparent 34%),
+        radial-gradient(ellipse at 52% 108%, rgba(190, 117, 15, .14), transparent 42%),
+        linear-gradient(155deg, #161511 0%, #080808 52%, #0c0b09 100%);
+    }
+    .hero::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: repeating-linear-gradient(118deg, transparent 0 44px, rgba(255,255,255,.018) 45px, transparent 46px 92px);
+      content: "";
+      mask-image: linear-gradient(90deg, transparent, #000 55%, transparent);
+    }
+    .hero::after {
+      position: absolute;
+      z-index: -1;
+      top: 19%;
+      right: -38%;
+      width: 100%;
+      height: 43%;
+      transform: rotate(-24deg);
+      background: linear-gradient(90deg, transparent, rgba(246, 205, 115, .055), transparent);
+      content: "";
+      filter: blur(15px);
+    }
+    .hero-content { width: min(100%, 850px); padding-block: 38px; transform: translateY(-24vh); }
+    .eyebrow, .section-kicker {
+      margin: 0 0 15px;
+      color: var(--gold);
+      font-size: .68rem;
+      font-weight: 900;
+      letter-spacing: .23em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    .hero h1 {
+      max-width: 820px;
+      margin-bottom: 0;
+      font-family: var(--display);
+      font-size: clamp(4.7rem, 20vw, 10rem);
+      font-weight: 900;
+      line-height: .78;
+      text-transform: uppercase;
+    }
+    .hero h1 span { display: block; color: var(--gold); }
+    .hero-line { width: 54px; height: 3px; margin: 29px 0 19px; background: var(--gold); }
+    .hero h2 {
+      max-width: 650px;
+      margin-bottom: 13px;
+      font-family: var(--display);
+      font-size: clamp(1.85rem, 7.6vw, 3rem);
+      font-weight: 800;
+      line-height: .98;
+      text-transform: uppercase;
+    }
+    .hero-copy { max-width: 480px; margin-bottom: 28px; color: #cfcdc7; font-size: 1rem; }
+    .hero-place {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--white);
+      font-size: .7rem;
+      font-weight: 900;
+      letter-spacing: .22em;
+    }
+    .hero-place::before { width: 24px; height: 1px; background: var(--gold); content: ""; }
+    .coming-soon {
+      position: absolute;
+      right: 20px;
+      bottom: 27px;
+      color: var(--gold);
+      font-size: .63rem;
+      font-weight: 900;
+      letter-spacing: .19em;
+    }
+
+    .photo-story { padding-block: 36px 58px; background: #0b0b0a; }
+    .photo-story-heading { margin-bottom: 24px; }
+    .photo-story h2 {
+      max-width: 620px;
+      margin-bottom: 12px;
+      font-family: var(--display);
+      font-size: clamp(2.4rem, 11vw, 4.5rem);
+      line-height: .9;
+      text-transform: uppercase;
+    }
+    .photo-story-copy { max-width: 560px; margin-bottom: 0; color: #c2c0bb; }
+    .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .photo-frame { margin: 0; overflow: hidden; border: 1px solid rgba(255,255,255,.12); background: #171715; }
+    .photo-feature { grid-column: 1 / -1; aspect-ratio: 1.24 / 1; }
+    .photo-support { aspect-ratio: .84 / 1; }
+    .photo-frame img, .card-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .photo-feature img { object-position: center 42%; }
+    .photo-support img { object-position: center; }
+
+    .purpose { padding-block: 78px 76px; }
+    .purpose-grid { display: grid; gap: 32px; }
+    .purpose h2, .library-heading h2, .closing h2 {
+      margin-bottom: 18px;
+      font-family: var(--display);
+      font-size: clamp(2.8rem, 12vw, 5rem);
+      font-weight: 900;
+      line-height: .88;
+      text-transform: uppercase;
+    }
+    .purpose-copy { max-width: 640px; color: #c2c0bb; font-size: .98rem; }
+    .truths { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+    .truth {
+      min-height: 91px;
+      padding: 19px 9px 16px 0;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--display);
+      font-size: clamp(1.15rem, 5vw, 1.7rem);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .truth:nth-child(odd) { border-right: 1px solid var(--line); }
+    .truth:nth-child(even) { padding-left: 14px; }
+    .truth span { display: block; margin-top: 9px; color: var(--gold); font: 700 .67rem var(--body); }
+
+    .challenge {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding-block: 76px;
+      border-block: 1px solid rgba(243,189,66,.25);
+      background:
+        radial-gradient(ellipse at 95% 2%, rgba(243,189,66,.17), transparent 32%),
+        linear-gradient(155deg, #171511, #090908 58%, #11100d);
+    }
+    .challenge::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: repeating-linear-gradient(125deg, transparent 0 48px, rgba(255,255,255,.018) 49px, transparent 50px 100px);
+      content: "";
+      mask-image: linear-gradient(90deg, transparent, #000 55%, transparent);
+    }
+    .challenge .wrap { position: relative; }
+    .challenge-heading { max-width: 760px; margin-bottom: 30px; }
+    .challenge-title {
+      margin-bottom: 18px;
+      font-family: var(--display);
+      font-size: clamp(3.25rem, 15vw, 7rem);
+      line-height: .8;
+      text-transform: uppercase;
+    }
+    .challenge-title span { display: block; color: var(--gold); }
+    .challenge-question {
+      margin-bottom: 16px;
+      font-family: var(--display);
+      font-size: clamp(1.75rem, 7.5vw, 3rem);
+      line-height: .94;
+      text-transform: uppercase;
+    }
+    .challenge-intro { max-width: 620px; margin-bottom: 22px; color: #dedbd2; font-size: 1rem; }
+    .challenge-cta {
+      display: flex;
+      min-height: 56px;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 18px;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: #11100c;
+      font-size: .8rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-align: center;
+      text-transform: uppercase;
+      transition: background .2s ease, color .2s ease;
+    }
+    .challenge-cta:hover { background: transparent; color: var(--gold); }
+    .challenge-grant {
+      display: grid;
+      gap: 16px;
+      margin-block: 38px 22px;
+      padding: 23px 20px;
+      border: 1px solid rgba(243,189,66,.62);
+      background: linear-gradient(110deg, rgba(243,189,66,.13), rgba(17,17,15,.8) 72%);
+    }
+    .grant-count { color: var(--gold); font-family: var(--display); font-size: 4.5rem; line-height: .8; }
+    .grant-copy { margin: 8px 0 0; font-family: var(--display); font-size: 1.35rem; line-height: 1.05; text-transform: uppercase; }
+    .grant-description { margin: 0; color: #d0cdc5; font-size: .95rem; }
+    .grant-actions { margin: 0; color: var(--gold); font-size: .92rem; font-weight: 900; line-height: 1.7; }
+    .grant-note { margin: 12px 0 0; color: var(--muted); font-size: .78rem; }
+
+    .prize-heading, .ideas-heading, .steps-heading {
+      margin-bottom: 18px;
+      font-family: var(--display);
+      font-size: clamp(1.9rem, 8vw, 3rem);
+      line-height: .92;
+      text-transform: uppercase;
+    }
+    .prizes { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 44px; }
+    .prize {
+      min-height: 116px;
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.035);
+    }
+    .prize:first-child { grid-column: 1 / -1; min-height: 144px; border-color: var(--gold); background: linear-gradient(120deg, rgba(243,189,66,.2), rgba(255,255,255,.035)); }
+    .prize-place { display: block; margin-bottom: 7px; color: #d9d6cd; font-size: .7rem; font-weight: 900; letter-spacing: .17em; }
+    .prize-amount { display: block; color: var(--gold); font-family: var(--display); font-size: clamp(2.25rem, 10vw, 4rem); line-height: .88; }
+    .prize:first-child .prize-amount { font-size: clamp(3.6rem, 17vw, 6rem); }
+    .prize-note { margin: 13px 0 0; color: #c7c3b9; font-size: .82rem; }
+
+    .ideas { padding-top: 34px; border-top: 1px solid var(--line); }
+    .idea-groups { display: grid; gap: 0; }
+    .idea-group { padding: 20px 0; border-top: 1px solid rgba(255,255,255,.12); }
+    .idea-group h4 { margin: 0 0 12px; color: var(--gold); font-size: .82rem; font-weight: 900; letter-spacing: .13em; }
+    .idea-group ul { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
+    .idea-group li { position: relative; padding-left: 17px; color: #e1ded7; font-size: .9rem; line-height: 1.45; }
+    .idea-group li::before { position: absolute; top: .65em; left: 0; width: 6px; height: 2px; background: var(--gold); content: ""; }
+    .surprise { margin: 28px 0 50px; padding: 21px 18px; border-inline: 2px solid var(--gold); background: rgba(243,189,66,.07); }
+    .surprise strong { display: block; margin-bottom: 7px; color: var(--gold); font-family: var(--display); font-size: clamp(2.4rem, 11vw, 4rem); line-height: .9; }
+    .surprise p { margin: 0; color: #ece9e2; font-size: .96rem; }
+
+    .steps { display: grid; gap: 0; margin-bottom: 34px; }
+    .step-row { display: grid; grid-template-columns: 42px 1fr; gap: 12px; padding: 17px 0; border-top: 1px solid rgba(255,255,255,.12); }
+    .step-number { color: var(--gold); font-family: var(--display); font-size: 1.8rem; line-height: 1; }
+    .step-row h4 { margin: 0 0 4px; font-size: .82rem; font-weight: 900; letter-spacing: .1em; }
+    .step-row p { margin: 0; color: #c7c4bc; font-size: .88rem; line-height: 1.45; }
+    .challenge-bottom-cta { margin-top: 30px; }
+
+    .library { padding-block: 76px 84px; background: #0e0e0d; border-block: 1px solid rgba(255,255,255,.055); }
+    .library-heading { max-width: 640px; margin-bottom: 34px; }
+    .library-heading > p:last-child { color: var(--muted); }
+    .cards { display: grid; gap: 12px; }
+    .card {
+      position: relative;
+      display: flex;
+      min-height: 0;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.1);
+      background: #11110f;
+    }
+    .card-photo { display: block; width: 100%; aspect-ratio: 1.55 / 1; overflow: hidden; background: #171715; }
+    .card-copy { padding: 21px; }
+    .card::after {
+      position: absolute;
+      inset: auto 0 0;
+      height: 2px;
+      transform: scaleX(.2);
+      transform-origin: left;
+      background: var(--gold);
+      content: "";
+      transition: transform .3s ease;
+    }
+    .card:hover::after { transform: scaleX(1); }
+    .card-index { position: relative; z-index: 1; margin-bottom: 9px; color: var(--gold); font-size: .62rem; font-weight: 900; letter-spacing: .2em; }
+    .card h3 { position: relative; z-index: 1; max-width: 270px; margin-bottom: 8px; font-family: var(--display); font-size: 2rem; line-height: .95; text-transform: uppercase; }
+    .card p { position: relative; z-index: 1; max-width: 360px; margin-bottom: 0; color: #bdbbb5; font-size: .88rem; }
+
+    .closing {
+      position: relative;
+      overflow: hidden;
+      padding-block: 88px 77px;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 110%, rgba(243,189,66,.16), transparent 50%), #090909;
+    }
+    .closing .section-kicker { margin-bottom: 21px; }
+    .closing h2 { margin-bottom: 20px; }
+    .closing-copy { max-width: 440px; margin: 0 auto 27px; color: #c3c1bb; }
+    .closing-callout { display: inline-block; padding: 12px 17px; border: 1px solid rgba(243,189,66,.75); color: var(--gold); font-size: .72rem; font-weight: 900; letter-spacing: .2em; }
+    footer { padding-block: 22px; border-top: 1px solid var(--line); color: #77756e; font-size: .7rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 14px; }
+    .footer-inner strong { color: #d2d0c9; letter-spacing: .08em; }
+
+    @media (min-width: 700px) {
+      .wrap { width: min(100% - 64px, 1120px); }
+      .hero { min-height: max(740px, 100svh); }
+      .hero-content { padding-block: 70px; transform: none; }
+      .hero-copy { font-size: 1.08rem; }
+      .photo-story { padding-block: 64px 76px; }
+      .photo-story-heading { margin-bottom: 30px; }
+      .photo-grid { grid-template-columns: 1.3fr .7fr; gap: 14px; }
+      .photo-feature { grid-row: span 2; grid-column: auto; aspect-ratio: .96 / 1; }
+      .photo-support { aspect-ratio: 1.5 / 1; }
+      .challenge { padding-block: 100px; }
+      .challenge-grant { grid-template-columns: 150px 1fr; align-items: center; gap: 12px 22px; padding: 30px; }
+      .grant-count { grid-row: span 2; font-size: 6rem; }
+      .grant-copy { margin-top: 0; }
+      .grant-actions { grid-column: 2; }
+      .grant-description { grid-column: 2; }
+      .grant-note { grid-column: 2; }
+      .prizes { grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 62px; }
+      .prize:first-child { grid-column: auto; }
+      .prize, .prize:first-child { min-height: 160px; padding: 21px; }
+      .prize:first-child .prize-amount { font-size: clamp(3rem, 6vw, 4.5rem); }
+      .idea-groups { grid-template-columns: 1fr 1fr; column-gap: 36px; }
+      .idea-group { padding-block: 24px; }
+      .surprise { margin-block: 36px 62px; padding: 28px; }
+      .steps { grid-template-columns: 1fr 1fr; column-gap: 36px; }
+      .purpose { padding-block: 110px; }
+      .purpose-grid { grid-template-columns: 1fr .86fr; align-items: center; gap: 70px; }
+      .library { padding-block: 105px; }
+      .cards { grid-template-columns: repeat(6, 1fr); gap: 15px; }
+      .card { grid-column: span 2; }
+      .card-copy { padding: 22px; }
+      .card:nth-child(5) { grid-column: 3 / span 2; }
+      .closing { padding-block: 118px 105px; }
+    }
+    @media (max-width: 699px) and (max-height: 700px) {
+      .hero-content { transform: translateY(-18vh); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar wrap">
+    <a class="wordmark" href="#top" aria-label="Light The Mic CDO home">LIGHT <span>THE MIC</span></a>
+    <span class="topbar-location">Cagayan de Oro</span>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content wrap">
+        <p class="eyebrow">A new generation. A brighter future.</p>
+        <h1 id="hero-title">Light <span>The Mic</span></h1>
+        <div class="hero-line" aria-hidden="true"></div>
+        <h2>You were created for more.</h2>
+        <p class="hero-copy">Discover your gifts. Develop your potential. Follow Jesus. Change your world.</p>
+        <p class="hero-place">Cagayan de Oro</p>
+      </div>
+      <p class="coming-soon">SOMETHING IS COMING.</p>
+    </section>
+
+    <section class="photo-story" aria-labelledby="photo-story-title">
+      <div class="wrap">
+        <div class="photo-story-heading">
+          <p class="section-kicker">Real people. Real moments.</p>
+          <h2 id="photo-story-title">The work looks like people.</h2>
+          <p class="photo-story-copy">Discover your gifts. Develop your potential. Follow Jesus. Serve people. Give young people opportunities to use their gifts.</p>
+        </div>
+        <div class="photo-grid" aria-label="Light The Mic ministry photographs">
+          <figure class="photo-frame photo-feature">
+            <img src="images/IMG-20260928-WA0018%20-%20Copy.jpg" alt="A moment from Light The Mic ministry work." loading="lazy" decoding="async">
+          </figure>
+          <figure class="photo-frame photo-support">
+            <img src="images/IMG-20260812-WA0031%20-%20Copy.jpg" alt="" loading="lazy" decoding="async">
+          </figure>
+          <figure class="photo-frame photo-support">
+            <img src="images/IMG_20250415_174257.jpg" alt="" loading="lazy" decoding="async">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="challenge" id="challenge" aria-labelledby="challenge-title">
+      <div class="wrap">
+        <div class="challenge-heading">
+          <p class="section-kicker">A chance to put an idea into action</p>
+          <h2 class="challenge-title" id="challenge-title">The ₱500 <span>Challenge</span></h2>
+          <h3 class="challenge-question">What could you do with ₱500?</h3>
+          <p class="challenge-intro">We believe there is something in you worth developing. So we're putting something in your hands and challenging you to do something with it.</p>
+          <a class="challenge-cta" href="./500-challenge/">Take the ₱500 Challenge</a>
+        </div>
+
+        <div class="challenge-grant">
+          <div>
+            <span class="grant-count" aria-hidden="true">100</span>
+            <p class="grant-copy">Selected students will receive ₱500.</p>
+          </div>
+          <p class="grant-actions">Use it to CREATE. BUILD. SERVE. GROW. Then show us what you did.</p>
+          <p class="grant-note">The initial ₱500 is an investment in your idea, separate from the final prizes.</p>
+        </div>
+
+        <div class="prize-section" aria-labelledby="prize-heading">
+          <h3 class="prize-heading" id="prize-heading">Additional prizes</h3>
+          <div class="prizes">
+            <div class="prize">
+              <span class="prize-place">1ST PLACE</span>
+              <span class="prize-amount">₱5,000</span>
+              <p class="prize-note">A final prize, separate from the initial ₱500 investment.</p>
+            </div>
+            <div class="prize">
+              <span class="prize-place">2ND PLACE</span>
+              <span class="prize-amount">₱2,000</span>
+            </div>
+            <div class="prize">
+              <span class="prize-place">3RD PLACE</span>
+              <span class="prize-amount">₱1,000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ideas" aria-labelledby="ideas-heading">
+          <h3 class="ideas-heading" id="ideas-heading">What could I do with ₱500?</h3>
+          <div class="idea-groups">
+            <section class="idea-group" aria-labelledby="start-something">
+              <h4 id="start-something">Start something</h4>
+              <ul>
+                <li>Buy candy or snacks and sell them at school.</li>
+                <li>Buy materials and make bracelets, keychains or crafts.</li>
+                <li>Buy ingredients and make something to sell.</li>
+                <li>Buy supplies for a small service you can offer.</li>
+              </ul>
+            </section>
+            <section class="idea-group" aria-labelledby="create-something">
+              <h4 id="create-something">Create something</h4>
+              <ul>
+                <li>Make art.</li>
+                <li>Record a song.</li>
+                <li>Create a short film.</li>
+                <li>Design something.</li>
+                <li>Build something useful.</li>
+                <li>Start a small content project.</li>
+                <li>Buy materials that help demonstrate a talent.</li>
+              </ul>
+            </section>
+            <section class="idea-group" aria-labelledby="help-someone">
+              <h4 id="help-someone">Help someone</h4>
+              <ul>
+                <li>Buy groceries for someone in need.</li>
+                <li>Feed someone who is hungry.</li>
+                <li>Buy school supplies for a child.</li>
+                <li>Help an elderly neighbor.</li>
+                <li>Identify a community need and creatively use ₱500 to help.</li>
+              </ul>
+            </section>
+            <section class="idea-group" aria-labelledby="invest-in-yourself">
+              <h4 id="invest-in-yourself">Invest in yourself</h4>
+              <ul>
+                <li>Buy materials to learn or practice a skill.</li>
+                <li>Purchase supplies for something you're already good at.</li>
+                <li>Use the money toward developing your gift.</li>
+              </ul>
+            </section>
+          </div>
+          <div class="surprise">
+            <strong>Or surprise us.</strong>
+            <p>These are only examples. Your idea doesn't have to look like anyone else's.</p>
+          </div>
+        </div>
+
+        <div class="challenge-steps" aria-labelledby="steps-heading">
+          <h3 class="steps-heading" id="steps-heading">Your six steps</h3>
+          <div class="steps">
+            <article class="step-row">
+              <span class="step-number">1</span>
+              <div><h4>APPLY</h4><p>Tell us what you would do with ₱500.</p></div>
+            </article>
+            <article class="step-row">
+              <span class="step-number">2</span>
+              <div><h4>GET SELECTED</h4><p>Up to 100 qualified students will be selected to receive ₱500.</p></div>
+            </article>
+            <article class="step-row">
+              <span class="step-number">3</span>
+              <div><h4>DO IT</h4><p>Put your plan into action.</p></div>
+            </article>
+            <article class="step-row">
+              <span class="step-number">4</span>
+              <div><h4>SHOW US</h4><p>Document what you did with photos or a short video and tell us what happened.</p></div>
+            </article>
+            <article class="step-row">
+              <span class="step-number">5</span>
+              <div><h4>ENTER THE VOTING</h4><p>Qualified completed projects can be presented online for voting.</p></div>
+            </article>
+            <article class="step-row">
+              <span class="step-number">6</span>
+              <div><h4>WIN</h4><p>Top entries compete for ₱5,000 / ₱2,000 / ₱1,000.</p></div>
+            </article>
+          </div>
+        </div>
+        <a class="challenge-cta challenge-bottom-cta" href="./500-challenge/">Take the ₱500 Challenge</a>
+      </div>
+    </section>
+
+    <section class="purpose" aria-labelledby="purpose-title">
+      <div class="purpose-grid wrap">
+        <div>
+          <p class="section-kicker">Start with what is already in you</p>
+          <h2 id="purpose-title">There is something in you.</h2>
+          <p class="purpose-copy">Light The Mic exists to help young people discover what God has placed inside them, develop their potential, find answers to important questions, encounter Jesus Christ, and use their lives to impact their world.</p>
+        </div>
+        <div class="truths" aria-label="Your life has purpose; your gifts, questions, and future matter">
+          <p class="truth">Your life <span>has purpose.</span></p>
+          <p class="truth">Your gifts <span>matter.</span></p>
+          <p class="truth">Your questions <span>matter.</span></p>
+          <p class="truth">Your future <span>matters.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="library" aria-labelledby="library-title">
+      <div class="wrap">
+        <div class="library-heading">
+          <p class="section-kicker">Ideas worth turning up</p>
+          <h2 id="library-title">Room to grow. Reasons to believe.</h2>
+          <p>Big questions, real-life tools, and a place to bring what makes you, you.</p>
+        </div>
+        <div class="cards">
+          <article class="card" data-mark="01">
+            <div class="card-photo"><img src="images/IMG-20260901-WA0001%20-%20Copy.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div class="card-copy">
+              <span class="card-index">01 / INSPIRATION</span>
+              <h3>Created for more</h3>
+              <p>Inspiring stories of people who started with little and did something extraordinary.</p>
+            </div>
+          </article>
+          <article class="card" data-mark="02">
+            <div class="card-photo"><img src="images/IMG-20260812-WA0011.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div class="card-copy">
+              <span class="card-index">02 / HONEST CONVERSATION</span>
+              <h3>Real questions</h3>
+              <p>Honest answers about God, Jesus, purpose, suffering, the Bible and life.</p>
+            </div>
+          </article>
+          <article class="card" data-mark="03">
+            <div class="card-photo"><img src="images/IMG-20260812-WA0017%20-%20Copy.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div class="card-copy">
+              <span class="card-index">03 / EVERYDAY SKILLS</span>
+              <h3>The Playbook</h3>
+              <p>Practical help developing gifts, education, business, technology, money and life skills.</p>
+            </div>
+          </article>
+          <article class="card" data-mark="04">
+            <div class="card-photo"><img src="images/IMG-20260812-WA0019%20-%20Copy.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div class="card-copy">
+              <span class="card-index">04 / YOUR CREATIVE SIDE</span>
+              <h3>Light the Mic</h3>
+              <p>Music, talent, creativity and opportunities for young people.</p>
+            </div>
+          </article>
+          <article class="card" data-mark="05">
+            <div class="card-photo"><img src="images/IMG-20260812-WA0021%20-%20Copy.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div class="card-copy">
+              <span class="card-index">05 / THE BIGGEST STORY</span>
+              <h3>Jesus</h3>
+              <p>Discover who Jesus is, why He matters and what it means to follow Him.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="wrap">
+        <p class="section-kicker">Cagayan de Oro</p>
+        <h2 id="closing-title">CDO — Stay connected</h2>
+        <p class="closing-copy">We're preparing something for young people in Cagayan de Oro.</p>
+        <p class="closing-callout">COME BACK SOON.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner wrap"><strong>LIGHT THE MIC · CDO</strong><span>Music. Message. Movement.</span></div>
+  </footer>
+</body>
+</html>
