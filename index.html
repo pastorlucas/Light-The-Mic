@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Light The Mic — Music. Message. Movement. Discover your gifts, develop your potential, follow Jesus, and change your world.">
   <title>Light The Mic | Music. Message. Movement.</title>
+  <link rel="preload" as="image" href="images/homepage/1.jpg" fetchpriority="high">
 
   <style>
     * {
@@ -74,54 +75,114 @@
     /* HERO */
 
     .hero {
-      min-height: 88vh;
+      position: relative;
+      isolation: isolate;
+      min-height: clamp(540px, calc(100svh - 62px), 820px);
       display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 24px;
+      align-items: flex-end;
+      justify-content: flex-start;
+      overflow: hidden;
+      padding: 76px 20px 104px;
+      text-align: left;
+      background: #050505;
+    }
+
+    .hero-media {
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      overflow: hidden;
+      background: #101010;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.015);
+      transition: opacity .8s ease;
+    }
+
+    .hero-photo.is-active {
+      opacity: 1;
+      animation: hero-photo-drift 9s ease-out both;
+    }
+
+    .hero::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
       background:
-        radial-gradient(circle at 50% 30%, rgba(244,185,0,.22), transparent 35%),
-        linear-gradient(180deg, #111 0%, #050505 75%);
+        linear-gradient(90deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,.47) 48%, rgba(0,0,0,.18) 100%),
+        linear-gradient(0deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.2) 55%, rgba(0,0,0,.18) 100%);
+      content: "";
+    }
+
+    @keyframes hero-photo-drift {
+      from { transform: scale(1.015); }
+      to { transform: scale(1.075); }
     }
 
     .hero-content {
-      max-width: 950px;
+      position: relative;
+      z-index: 1;
+      width: min(100%, 1120px);
+      margin-inline: auto;
     }
 
-    .eyebrow {
+    .hero .eyebrow {
       color: #f4b900;
       text-transform: uppercase;
-      letter-spacing: 5px;
+      letter-spacing: 4px;
+      font-size: .72rem;
       font-weight: 800;
-      margin-bottom: 18px;
+      margin-bottom: 13px;
+      text-shadow: 0 2px 14px rgba(0,0,0,.6);
     }
 
     .hero h1 {
-      font-size: clamp(4rem, 12vw, 9rem);
-      line-height: 0.86;
+      font-family: Impact, "Arial Narrow", "Arial Black", sans-serif;
+      font-size: clamp(2.25rem, 5.2vw, 4.2rem);
+      line-height: .82;
       font-weight: 1000;
-      letter-spacing: -5px;
+      letter-spacing: 0;
       text-transform: uppercase;
+      text-shadow: 0 3px 18px rgba(0,0,0,.4);
     }
 
     .hero h1 .gold {
+      display: block;
       color: #f4b900;
     }
 
-    .tagline {
-      margin-top: 28px;
-      font-size: clamp(1.15rem, 3vw, 1.8rem);
-      font-weight: 800;
-      letter-spacing: 3px;
+    .hero .tagline {
+      max-width: 790px;
+      margin-top: 19px;
+      font-family: Impact, "Arial Narrow", "Arial Black", sans-serif;
+      font-size: clamp(2.4rem, 7.5vw, 5.4rem);
+      font-weight: 900;
+      line-height: .86;
+      letter-spacing: 0;
       text-transform: uppercase;
+      text-shadow: 0 3px 20px rgba(0,0,0,.56);
     }
 
     .hero-text {
-      max-width: 680px;
-      margin: 22px auto 0;
-      color: #c9c9c9;
-      font-size: 1.08rem;
+      max-width: 600px;
+      margin: 15px 0 0;
+      color: #f0efeb;
+      font-size: 1rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,.75);
+    }
+
+    .hero .buttons {
+      justify-content: flex-start;
+      margin-top: 24px;
+      gap: 10px;
     }
 
     .buttons {
@@ -155,6 +216,107 @@
     .btn-secondary:hover {
       background: #f4b900;
       color: #050505;
+    }
+
+    .hero .btn {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 17px;
+      font-size: .72rem;
+      text-align: center;
+      text-shadow: none;
+    }
+
+    .hero-controls {
+      position: absolute;
+      z-index: 2;
+      right: 18px;
+      bottom: 17px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .hero-arrow, .hero-dot {
+      display: grid;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.46);
+      background: rgba(0,0,0,.34);
+      color: #fff;
+      cursor: pointer;
+      transition: background .2s ease, border-color .2s ease;
+    }
+
+    .hero-arrow {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    .hero-dot {
+      width: 28px;
+      height: 38px;
+      border: 0;
+      background: transparent;
+    }
+
+    .hero-dot::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.64);
+      content: "";
+      transition: width .2s ease, border-radius .2s ease, background .2s ease;
+    }
+
+    .hero-dot[aria-current="true"]::before {
+      width: 19px;
+      border-radius: 5px;
+      background: #f4b900;
+    }
+
+    .hero-arrow:hover, .hero-dot:hover::before {
+      border-color: #f4b900;
+      background-color: #f4b900;
+    }
+
+    .hero-arrow:focus-visible, .hero-dot:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+
+    @media (min-width: 800px) {
+      .hero { padding: 80px 6vw 112px; }
+      .hero-content { text-align: center; }
+      .hero .buttons { justify-content: center; }
+      .hero::before {
+        background:
+          linear-gradient(90deg, rgba(0,0,0,.48), rgba(0,0,0,.1) 50%, rgba(0,0,0,.42)),
+          linear-gradient(0deg, rgba(0,0,0,.68), rgba(0,0,0,.05) 74%);
+      }
+      .hero-controls { right: 28px; bottom: 25px; }
+    }
+
+    @media (max-width: 420px) {
+      .hero { padding-inline: 17px; }
+      .hero .eyebrow { font-size: .64rem; letter-spacing: 3px; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero .tagline { font-size: clamp(2.2rem, 10vw, 2.65rem); }
+      .hero .hero-text { max-width: 340px; font-size: .95rem; }
+      .hero .buttons { display: grid; grid-template-columns: 1fr 1fr; }
+      .hero .btn { min-height: 52px; padding: 10px 9px; font-size: .64rem; letter-spacing: .5px; }
+      .hero-controls { right: 12px; bottom: 10px; gap: 3px; }
+      .hero-arrow { width: 34px; height: 34px; }
+      .hero-dot { width: 23px; height: 34px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-photo, .hero-photo.is-active { animation: none; transition: none; transform: none; }
     }
 
     /* EVENT */
@@ -367,28 +529,34 @@
 
   <main>
 
-    <section class="hero" id="home">
+    <section class="hero" id="home" aria-label="Light The Mic photo slideshow">
+      <div class="hero-media" aria-hidden="true">
+        <img class="hero-photo is-active" src="images/homepage/1.jpg" alt="" fetchpriority="high" decoding="async">
+        <img class="hero-photo" alt="" decoding="async">
+      </div>
+
       <div class="hero-content">
-
         <div class="eyebrow">Music • Message • Movement</div>
-
-        <h1>
-          Light<br>
-          <span class="gold">The Mic</span>
-        </h1>
-
-        <div class="tagline">You Were Created For More!</div>
-
-        <p class="hero-text">
-          Discover your gifts. Develop your potential. Follow Jesus.
-          Change your world.
-        </p>
+        <div class="tagline">You Were Created<br>For More!</div>
+        <p class="hero-text">Discover your gifts. Develop your potential. Follow Jesus. Change your world.</p>
 
         <div class="buttons">
           <a class="btn btn-primary" href="#event">CDO • January 30</a>
           <a class="btn btn-secondary" href="#movement">Discover The Movement</a>
         </div>
+      </div>
 
+      <div class="hero-controls" role="group" aria-label="Hero photograph controls">
+        <button class="hero-arrow" type="button" data-slide-direction="previous" aria-label="Previous photograph">‹</button>
+        <div class="hero-dots" role="group" aria-label="Choose a photograph">
+          <button class="hero-dot" type="button" data-slide="0" aria-label="Show photograph 1" aria-current="true"></button>
+          <button class="hero-dot" type="button" data-slide="1" aria-label="Show photograph 2" aria-current="false"></button>
+          <button class="hero-dot" type="button" data-slide="2" aria-label="Show photograph 3" aria-current="false"></button>
+          <button class="hero-dot" type="button" data-slide="3" aria-label="Show photograph 4" aria-current="false"></button>
+          <button class="hero-dot" type="button" data-slide="4" aria-label="Show photograph 5" aria-current="false"></button>
+          <button class="hero-dot" type="button" data-slide="5" aria-label="Show photograph 6" aria-current="false"></button>
+        </div>
+        <button class="hero-arrow" type="button" data-slide-direction="next" aria-label="Next photograph">›</button>
       </div>
     </section>
 
@@ -529,6 +697,127 @@
     <p>Music • Message • Movement</p>
     <p style="margin-top:12px;">© 2026 Light The Mic</p>
   </footer>
+
+  <script>
+    (() => {
+      const slides = [
+        { src: 'images/homepage/1.jpg', position: 'center 43%' },
+        { src: 'images/homepage/2.jpg', position: 'center 47%' },
+        { src: 'images/homepage/3.jpg', position: 'center 38%' },
+        { src: 'images/homepage/4.jpg', position: 'center 50%' },
+        { src: 'images/homepage/5.jpg', position: 'center 42%' },
+        { src: 'images/homepage/6.jpg', position: 'center 48%' }
+      ];
+      const hero = document.querySelector('.hero');
+      const photoLayers = [...hero.querySelectorAll('.hero-photo')];
+      const dots = [...hero.querySelectorAll('.hero-dot')];
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let activeIndex = 0;
+      let activeLayer = 0;
+      let preparedSlide = null;
+      let rotationTimer = 0;
+      let changeRequest = 0;
+
+      function loadSlide(index) {
+        return new Promise(resolve => {
+          const image = new Image();
+          let settled = false;
+          const finish = result => {
+            if (settled) return;
+            settled = true;
+            resolve(result);
+          };
+          const decode = () => {
+            if (typeof image.decode === 'function') {
+              image.decode().catch(() => {}).then(() => finish(image));
+            } else {
+              finish(image);
+            }
+          };
+          image.decoding = 'async';
+          image.fetchPriority = 'low';
+          image.onload = decode;
+          image.onerror = () => finish(null);
+          image.src = slides[index].src;
+          if (image.complete) {
+            if (image.naturalWidth) decode();
+            else finish(null);
+          }
+        });
+      }
+
+      function prepareNextSlide() {
+        const index = (activeIndex + 1) % slides.length;
+        preparedSlide = { index, image: loadSlide(index) };
+      }
+
+      function getSlideImage(index) {
+        if (preparedSlide && preparedSlide.index === index) {
+          const image = preparedSlide.image;
+          preparedSlide = null;
+          return image;
+        }
+        return loadSlide(index);
+      }
+
+      function scheduleRotation() {
+        window.clearTimeout(rotationTimer);
+        if (reducedMotion.matches || document.hidden) return;
+        rotationTimer = window.setTimeout(() => {
+          showSlide((activeIndex + 1) % slides.length);
+        }, 3000);
+      }
+
+      async function showSlide(index) {
+        window.clearTimeout(rotationTimer);
+        const request = ++changeRequest;
+        const image = await getSlideImage(index);
+        if (request !== changeRequest) return;
+        if (!image) {
+          scheduleRotation();
+          return;
+        }
+
+        const nextLayer = 1 - activeLayer;
+        const nextPhoto = photoLayers[nextLayer];
+        nextPhoto.classList.remove('is-active');
+        nextPhoto.src = slides[index].src;
+        nextPhoto.style.objectPosition = slides[index].position;
+        void nextPhoto.offsetWidth;
+        nextPhoto.classList.add('is-active');
+        photoLayers[activeLayer].classList.remove('is-active');
+        activeLayer = nextLayer;
+        activeIndex = index;
+
+        dots.forEach((dot, dotIndex) => {
+          dot.setAttribute('aria-current', String(dotIndex === activeIndex));
+        });
+
+        prepareNextSlide();
+        scheduleRotation();
+      }
+
+      hero.querySelector('[data-slide-direction="previous"]').addEventListener('click', () => {
+        showSlide((activeIndex - 1 + slides.length) % slides.length);
+      });
+      hero.querySelector('[data-slide-direction="next"]').addEventListener('click', () => {
+        showSlide((activeIndex + 1) % slides.length);
+      });
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => showSlide(Number(dot.dataset.slide)));
+      });
+
+      photoLayers[0].style.objectPosition = slides[0].position;
+      prepareNextSlide();
+      scheduleRotation();
+      document.addEventListener('visibilitychange', scheduleRotation);
+      if (typeof reducedMotion.addEventListener === 'function') {
+        reducedMotion.addEventListener('change', scheduleRotation);
+      } else {
+        reducedMotion.addListener(scheduleRotation);
+      }
+    })();
+  </script>
 
 </body>
 </html>
