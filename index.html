@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Light The Mic — Music. Message. Movement. Discover your gifts, develop your potential, follow Jesus, and change your world.">
   <title>Light The Mic | Music. Message. Movement.</title>
-  <link rel="preload" as="image" href="images/homepage/1.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="CDO/images/20250412_112042.png" fetchpriority="high">
 
   <style>
     * {
@@ -531,7 +531,7 @@
 
     <section class="hero" id="home" aria-label="Light The Mic photo slideshow">
       <div class="hero-media" aria-hidden="true">
-        <img class="hero-photo is-active" src="images/homepage/1.jpg" alt="" fetchpriority="high" decoding="async">
+        <img class="hero-photo is-active" src="CDO/images/20250412_112042.png" alt="" fetchpriority="high" decoding="async">
         <img class="hero-photo" alt="" decoding="async">
       </div>
 
@@ -701,22 +701,31 @@
   <script>
     (() => {
       const slides = [
-        { src: 'images/homepage/1.jpg', position: 'center 43%' },
+        { src: 'CDO/images/20250412_112042.png', position: 'center 43%' },
         { src: 'images/homepage/2.jpg', position: 'center 47%' },
         { src: 'images/homepage/3.jpg', position: 'center 38%' },
         { src: 'images/homepage/4.jpg', position: 'center 50%' },
         { src: 'images/homepage/5.jpg', position: 'center 42%' },
         { src: 'images/homepage/6.jpg', position: 'center 48%' }
       ];
+      const mobileFirstSlidePosition = '42% center';
       const hero = document.querySelector('.hero');
       const photoLayers = [...hero.querySelectorAll('.hero-photo')];
       const dots = [...hero.querySelectorAll('.hero-dot')];
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const mobileQuery = window.matchMedia('(max-width: 420px)');
       let activeIndex = 0;
       let activeLayer = 0;
       let preparedSlide = null;
       let rotationTimer = 0;
       let changeRequest = 0;
+
+      function getSlidePosition(index) {
+        if (index === 0 && mobileQuery.matches) {
+          return mobileFirstSlidePosition;
+        }
+        return slides[index].position;
+      }
 
       function loadSlide(index) {
         return new Promise(resolve => {
@@ -782,7 +791,7 @@
         const nextPhoto = photoLayers[nextLayer];
         nextPhoto.classList.remove('is-active');
         nextPhoto.src = slides[index].src;
-        nextPhoto.style.objectPosition = slides[index].position;
+        nextPhoto.style.objectPosition = getSlidePosition(index);
         void nextPhoto.offsetWidth;
         nextPhoto.classList.add('is-active');
         photoLayers[activeLayer].classList.remove('is-active');
@@ -807,10 +816,16 @@
         dot.addEventListener('click', () => showSlide(Number(dot.dataset.slide)));
       });
 
-      photoLayers[0].style.objectPosition = slides[0].position;
+      photoLayers[0].style.objectPosition = getSlidePosition(0);
       prepareNextSlide();
       scheduleRotation();
       document.addEventListener('visibilitychange', scheduleRotation);
+      if (typeof mobileQuery.addEventListener === 'function') {
+        mobileQuery.addEventListener('change', () => {
+          const activePhoto = photoLayers[activeLayer];
+          activePhoto.style.objectPosition = getSlidePosition(activeIndex);
+        });
+      }
       if (typeof reducedMotion.addEventListener === 'function') {
         reducedMotion.addEventListener('change', scheduleRotation);
       } else {
